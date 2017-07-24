@@ -8,7 +8,9 @@
     "grunt-contrib-compass": "^0.6.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^0.5.3",
+    "grunt-express": "^1.4.1",
     "grunt-sass-globbing": "^1.5.1",
+    "grunt-task-loader": "^0.6.0",
     "jeet": "^7.1.0",
     "sassdown": "0.1.4"
   },

@@ -1,5 +1,12 @@
 module.exports = function(grunt) {
 
+    // load all grunt task
+    require('grunt-task-loader')(grunt, {
+        mapping: {
+            sass_globbing: 'grunt-sass-globbing'
+        }
+    });
+
     grunt.initConfig({
 
         // Package
@@ -7,55 +14,65 @@ module.exports = function(grunt) {
 
 
         sass_globbing: {
-          sb: {
-            files: {
-              'assets/scss/screen.scss': [
-                'node_modules/jeet/scss/index.scss',
-                'assets/scss/common/**/*.scss',
-                'assets/scss/pages/**/*.scss'
-              ]
-            },
-            options: {
-              useSingleQuotes: false
+            sb: {
+                files: {
+                    'assets/scss/style.scss': [
+                        'node_modules/jeet/scss/index.scss',
+                        'assets/scss/common/**/*.scss',
+                        'assets/scss/pages/**/*.scss'
+                    ]
+                },
+                options: {
+                    useSingleQuotes: false
+                }
             }
-          }
         },
 
         sass: {
-          dist: {
-            files: {
-              'build/css/screen.css': 'assets/scss/screen.scss'
-            },
-            options: {
-              compass: true,
-              style: 'compressed'
+            dist: {
+                files: {
+                    'build/css/style.css': 'assets/scss/style.scss'
+                },
+                options: {
+                    compass: true,
+                    style: 'compressed',
+                    sourcemap: 'none'
+                }
             }
-          }
         },
 
         // Clean
         clean: {
-            pre: ['styleguide', 'assets/css'],
             post: ['.sass-cache']
         },
 
         // Watch
         watch: {
+            options: {
+                livereload: true,
+            },
             sass: {
                 files: ['assets/scss/**/*.{sass,scss}'],
-                tasks: ['sass_globbing','sass']
+                tasks: ['sass_globbing', 'sass']
+            }
+        },
+
+        // live reload
+        express: {
+            all: {
+                options: {
+                    port: 8000,
+                    hostname: 'localhost',
+                    bases: ['.'],
+                    livereload: true
+                }
             }
         }
 
     });
 
-    // Load NPM Tasks
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-sass-globbing');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-
     // Register Grunt tasks
-    grunt.registerTask('default', ['clean:pre', 'sass_globbing','sass', 'clean:post']);
-  
+    grunt.registerTask('default', ['clean:pre', 'sass_globbing', 'sass', 'clean:post']);
+    grunt.registerTask('server', ['express', 'watch']);
+
 };
