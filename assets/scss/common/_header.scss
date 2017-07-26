@@ -13,8 +13,18 @@ header {
     display: inline-block;
   }
   .header-nav {
-    // border: 1px solid red;
     float: right;
-    width: 100px
+    width: auto;
+    margin-top: 5px;
+    .btn {
+      font-size: 14px;
+    }
+    li {
+      float: left;
+      margin-right: 10px;
+      &:last-child {
+        margin: 0
+      }
+    }
   }
 }

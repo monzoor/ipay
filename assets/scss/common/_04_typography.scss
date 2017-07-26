@@ -6,18 +6,7 @@
 
 //== Typography mixin
 //## Rem converter
-@mixin clearfix() {
-  .clearfix:after {
-	  visibility: hidden;
-	  display: block;
-	  font-size: 0;
-	  content: " ";
-	  clear: both;
-	  height: 0;
-	}
-	* html .clearfix             { zoom: 1; } /* IE6 */
-	*:first-child+html .clearfix { zoom: 1; } /* IE7 */
-}
+
 @function rem($pixels, $context: $baseFontSize) {
 	@if (unitless($pixels)) {
 		$pixels: $pixels * 1px;
@@ -51,15 +40,15 @@ html {
 
 //## Global headers style
 h1, h2, h3, h4 {
-	margin: .5em 0;
+	margin: 0;
 	font-family: $font-family-roboto;
 	color: $brand-dark;
 }
 
-h1 { font-size: rem(48); }
-h2 { font-size: rem(36); }
-h3 { font-size: rem(27); }
-h4 { font-size: rem(18); }
+h1 { font-size: rem(48); line-height: rem(60); }
+h2 { font-size: rem(36); line-height: rem(48); }
+h3 { font-size: rem(27); line-height: rem(39); }
+h4 { font-size: rem(18); line-height: rem(30); }
 	
 //== Paragraphs
 //
@@ -95,6 +84,7 @@ p {
 			font: baseFontSize(12);
 			letter-spacing: 3px;
 			font-weight: bold;
+			text-transform: uppercase;
 		}
 		&--paragraph {
 			font: baseFontSize(16, $font-family-roboto);
@@ -105,6 +95,12 @@ p {
 
 	// color
 	&--brand { color: $brand-real }
+	&--white { color: $white }
+
+	// alignment
+	&--center {
+		text-align: center
+	}
 }
 
 // //## Global link style

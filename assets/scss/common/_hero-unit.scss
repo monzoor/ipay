@@ -1,0 +1,25 @@
+/**********************
+*                     *
+*   Hero              *
+*                     *
+***********************/
+
+.hero-wrapper {
+  height: calc(100vh - 76px);
+  @include retina-background-image("../img/hero", "jpg", cover);
+  .hero-text {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .btn {
+      border: 0;
+      &.mrm {
+        @include breakpoint($mobile) {
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+}

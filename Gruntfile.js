@@ -4,7 +4,6 @@ module.exports = function(grunt) {
     require('grunt-task-loader')(grunt, {
         mapping: {
             sass_globbing: 'grunt-sass-globbing',
-            // postcss: 'grunt-postcss'
         }
     });
 
@@ -68,6 +67,12 @@ module.exports = function(grunt) {
                     cwd: 'assets/font/',
                     src: ['*.{eot,svg,ttf,woff,woff2}'],
                     dest: 'build/font/'
+                },
+                {
+                  expand: true,
+                  cwd: 'assets/img/',
+                  src: ['**'],
+                  dest: 'build/img/',
                 }]
             }
         },
@@ -78,8 +83,8 @@ module.exports = function(grunt) {
                 livereload: true,
             },
             sass: {
-                files: ['assets/scss/**/*.{sass,scss}'],
-                tasks: ['sass_globbing', 'sass', 'autoprefixer']
+                files: ['assets/scss/**/*.{sass,scss}', '*.html'],
+                tasks: ['sass_globbing', 'sass', 'autoprefixer', 'copy']
             }
         },
 
@@ -88,7 +93,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     port: 8000,
-                    hostname: 'localhost',
+                    hostname: '*',
                     bases: ['.'],
                     livereload: true
                 }
