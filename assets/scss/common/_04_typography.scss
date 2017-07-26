@@ -1,0 +1,115 @@
+/**********************
+*					  *
+*   Typography		  *
+*					  *
+***********************/
+
+//== Typography mixin
+//## Rem converter
+@mixin clearfix() {
+  .clearfix:after {
+	  visibility: hidden;
+	  display: block;
+	  font-size: 0;
+	  content: " ";
+	  clear: both;
+	  height: 0;
+	}
+	* html .clearfix             { zoom: 1; } /* IE6 */
+	*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+}
+@function rem($pixels, $context: $baseFontSize) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
+}
+
+// Base font size creator
+@function baseFontSize($size, $font_family: $font-family-open-sans) {
+	@return #{$size}px/#{$size+ 10}px $font_family;
+}
+// ============================================================
+
+//== Headings
+//
+//## Global font base including media query
+html {
+	font: baseFontSize($baseFontSize); // 14px/24px
+	@include breakpoint($tablet) {
+		font: baseFontSize($baseFontSize - 2, normal); // 12px/22px
+	}
+	@include breakpoint($mobile) {
+		font: baseFontSize($baseFontSize - 4, normal); // 10px/20px
+	}
+}
+
+//## Global headers style
+h1, h2, h3, h4 {
+	margin: .5em 0;
+	font-family: $font-family-roboto;
+	color: $brand-dark;
+}
+
+h1 { font-size: rem(48); }
+h2 { font-size: rem(36); }
+h3 { font-size: rem(27); }
+h4 { font-size: rem(18); }
+	
+//== Paragraphs
+//
+//## Global paragraph styles
+
+p {
+	font: baseFontSize($baseFontSize, $font-family-open-sans);
+	margin: 0 0 1em 0;
+	color: $gray;
+}
+
+
+//## Global text color styles
+.text {
+	// font weight
+	&--thin { font-weight: 100; }
+	&--medium { font-weight: 500; }
+	&--bold { font-weight: bold; }
+
+	// text size
+	&--sub-headline {
+		@extend h4;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+	}
+
+	&__title {
+		&--big {
+			@extend h2;
+			@extend .text--medium;
+		}
+		&--small {
+			font: baseFontSize(12);
+			letter-spacing: 3px;
+			font-weight: bold;
+		}
+		&--paragraph {
+			font: baseFontSize(16, $font-family-roboto);
+			font-weight: bold;
+			color: $brand-dark;
+		}
+	}
+
+	// color
+	&--brand { color: $brand-real }
+}
+
+// //## Global link style
+// a {
+// 	color: $link-color;
+// 	text-decoration: none;
+// }
+

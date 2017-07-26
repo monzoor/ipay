@@ -1,0 +1,20 @@
+/**********************
+*                     *
+*   Header            *
+*                     *
+***********************/
+
+header {
+  padding: 17px 0;
+  .logo-wrapper {
+    font-size: 42px;
+    color: $white;
+    @include clearfix();
+    display: inline-block;
+  }
+  .header-nav {
+    // border: 1px solid red;
+    float: right;
+    width: 100px
+  }
+}

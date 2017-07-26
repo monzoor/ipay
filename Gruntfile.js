@@ -18,6 +18,7 @@ module.exports = function(grunt) {
                 files: {
                     'assets/scss/style.scss': [
                         'node_modules/jeet/scss/index.scss',
+                        'node_modules/breakpoint-sass/stylesheets/_breakpoint.scss',
                         'assets/scss/common/**/*.scss',
                         'assets/scss/pages/**/*.scss'
                     ]
@@ -35,7 +36,8 @@ module.exports = function(grunt) {
                 },
                 options: {
                     compass: true,
-                    style: 'compressed',
+                    style: 'expanded',
+                    // style: 'compressed',
                     sourcemap: 'none'
                 }
             }
@@ -44,6 +46,18 @@ module.exports = function(grunt) {
         // Clean
         clean: {
             post: ['.sass-cache']
+        },
+
+        // Copy files from assets
+        copy: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/font/',
+                    src: ['*.{eot,svg,ttf,woff,woff2}'],
+                    dest: 'build/font/'
+                }]
+            }
         },
 
         // Watch
@@ -72,7 +86,7 @@ module.exports = function(grunt) {
     });
 
     // Register Grunt tasks
-    grunt.registerTask('default', ['clean:pre', 'sass_globbing', 'sass', 'clean:post']);
+    grunt.registerTask('default', ['clean', 'sass_globbing', 'sass', 'copy', 'clean:post']);
     grunt.registerTask('server', ['express', 'watch']);
 
 };
