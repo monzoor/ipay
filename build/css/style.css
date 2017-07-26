@@ -631,6 +631,11 @@ p {
   border-bottom: 0;
 }
 
+a {
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .btn--primary {
   background-color: #F9F9F9;
   border-bottom: 2px solid #F9F9F9;

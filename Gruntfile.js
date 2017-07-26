@@ -3,7 +3,8 @@ module.exports = function(grunt) {
     // load all grunt task
     require('grunt-task-loader')(grunt, {
         mapping: {
-            sass_globbing: 'grunt-sass-globbing'
+            sass_globbing: 'grunt-sass-globbing',
+            // postcss: 'grunt-postcss'
         }
     });
 
@@ -43,6 +44,17 @@ module.exports = function(grunt) {
             }
         },
 
+        autoprefixer: {
+            dev: {  
+                options: {
+                    browsers: ['last 2 versions', 'ie 8', 'ie 9']
+                 },
+                 expand:true,
+                 src: 'build/css/style.css',
+                 dest: ''
+            }
+        },
+
         // Clean
         clean: {
             post: ['.sass-cache']
@@ -67,7 +79,7 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: ['assets/scss/**/*.{sass,scss}'],
-                tasks: ['sass_globbing', 'sass']
+                tasks: ['sass_globbing', 'sass', 'autoprefixer']
             }
         },
 
@@ -86,7 +98,7 @@ module.exports = function(grunt) {
     });
 
     // Register Grunt tasks
-    grunt.registerTask('default', ['clean', 'sass_globbing', 'sass', 'copy', 'clean:post']);
+    grunt.registerTask('default', ['clean', 'sass_globbing', 'sass', 'autoprefixer', 'copy', 'clean:post']);
     grunt.registerTask('server', ['express', 'watch']);
 
 };
