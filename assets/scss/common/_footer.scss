@@ -43,6 +43,7 @@ footer {
           font-size: 24px;
           @include breakpoint ($mobile) {
             width: inherit;
+            margin-bottom: 0;
           }
           a {
             color: $white;
@@ -60,6 +61,12 @@ footer {
       .nfl {
         @include breakpoint ($mobile) {
           float: none;
+        }
+        @include breakpoint ($tablet) {
+          float: none;
+          width: 100%;
+          display: inline-block;
+          margin-top: 10px;
         }
       }
     }

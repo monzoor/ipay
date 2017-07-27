@@ -87,7 +87,7 @@ body {
 
 //== column
 .col--half {
-  @include column(1/2, $gutter: 2);
+  @include column(1/2, $gutter: 3);
   @include breakpoint($mobile) {
     width: 100%;
   }
@@ -126,6 +126,23 @@ body {
 }
 .shadow--bottom-less {
   box-shadow: 0px -3px 6px 0px rgba(0, 0, 0, 0.15);
+}
+
+//== Image
+
+.image-wrapper {
+  width: 360px;
+  @include breakpoint($mobile) {
+    margin: 0 auto;
+    width: 320px;
+    float: none !important;
+  }
+  img {
+    @include breakpoint($mobile) {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
 }
 
 

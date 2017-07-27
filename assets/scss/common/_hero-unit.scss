@@ -5,8 +5,17 @@
 ***********************/
 
 .hero-wrapper {
-  height: calc(100vh - 76px);
-  @include retina-background-image("../img/hero", "jpg", cover);
+  &.hero-bg {
+    height: calc(100vh - 76px);
+    @include retina-background-image("../img/hero", "jpg", cover);
+  }
+  &.hero-canvas {
+    height: 500px;
+    background-color: $brand-dark;
+    @include breakpoint($mobile) {
+      height: calc(100vh - 76px);
+    }
+  }
   .hero-text {
     position: absolute;
     width: 100%;

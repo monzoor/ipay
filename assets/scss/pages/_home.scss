@@ -4,21 +4,7 @@
 *                     *
 ***********************/
 
-.home {
-  .image-wrapper {
-    width: 360px;
-    @include breakpoint($mobile) {
-      margin: 0 auto;
-      width: 320px;
-      float: none;
-    }
-    img {
-      @include breakpoint($mobile) {
-        width: 70%;
-        margin: 0 auto;
-      }
-    }
-  }
+.home { 
   .video-wrapper {
     width: 100%;
     img {

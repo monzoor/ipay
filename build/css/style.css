@@ -574,9 +574,9 @@ body {
   float: left;
   clear: none;
   text-align: inherit;
-  width: 49%;
+  width: 48.5%;
   margin-left: 0%;
-  margin-right: 2%;
+  margin-right: 3%;
 }
 .col--half::after {
   content: '';
@@ -652,6 +652,23 @@ body {
 
 .shadow--bottom-less {
   box-shadow: 0px -3px 6px 0px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+  width: 360px;
+}
+@media (max-width: 768px) {
+  .image-wrapper {
+    margin: 0 auto;
+    width: 320px;
+    float: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .image-wrapper img {
+    width: 70%;
+    margin: 0 auto;
+  }
 }
 
 /**********************
@@ -847,6 +864,7 @@ footer .nav-top .social li, footer .nav-bottom .social li {
 @media (max-width: 768px) {
   footer .nav-top .social li, footer .nav-bottom .social li {
     width: inherit;
+    margin-bottom: 0;
   }
 }
 footer .nav-top .social li a, footer .nav-bottom .social li a {
@@ -859,6 +877,14 @@ footer .nav-bottom ul li {
 @media (max-width: 768px) {
   footer .nav-bottom .nfl {
     float: none;
+  }
+}
+@media (max-width: 992px) {
+  footer .nav-bottom .nfl {
+    float: none;
+    width: 100%;
+    display: inline-block;
+    margin-top: 10px;
   }
 }
 footer .devider {
@@ -912,7 +938,7 @@ header .header-nav li:last-child {
 *   Hero              *
 *                     *
 ***********************/
-.hero-wrapper {
+.hero-wrapper.hero-bg {
   height: calc(100vh - 76px);
   background-image: url("../img/hero.jpg");
   background-repeat: no-repeat;
@@ -920,8 +946,17 @@ header .header-nav li:last-child {
   background-size: cover;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .hero-wrapper {
+  .hero-wrapper.hero-bg {
     background-image: url("../img/hero@2x.jpg");
+  }
+}
+.hero-wrapper.hero-canvas {
+  height: 500px;
+  background-color: #212121;
+}
+@media (max-width: 768px) {
+  .hero-wrapper.hero-canvas {
+    height: calc(100vh - 76px);
   }
 }
 .hero-wrapper .hero-text {
@@ -1021,11 +1056,6 @@ header .header-nav li:last-child {
 }
 
 /* '' */
-.icon-line:before {
-  content: '\e807';
-}
-
-/* '' */
 .icon-burger:before {
   content: '\e808';
 }
@@ -1036,6 +1066,11 @@ header .header-nav li:last-child {
 }
 
 /* '' */
+.icon-outing:before {
+  content: '\e80a';
+}
+
+/* '' */
 .mtn {
   margin-top: 0 !important;
 }
@@ -1056,7 +1091,7 @@ header .header-nav li:last-child {
   margin: 0 !important;
 }
 
-.mts {
+.mts, .career .benefits ul li p {
   margin-top: 10px !important;
 }
 
@@ -1235,25 +1270,88 @@ header .header-nav li:last-child {
 
 /**********************
 *                     *
+*   Career       *
+*                     *
+***********************/
+.career .benefits {
+  margin-top: 80px;
+  text-align: center;
+}
+.career .benefits ul {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+@media (max-width: 768px) {
+  .career .benefits ul {
+    margin-bottom: 0;
+    display: block;
+  }
+}
+.career .benefits ul li {
+  width: 180px;
+  text-align: center;
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+@media (max-width: 768px) {
+  .career .benefits ul li {
+    float: left;
+    clear: none;
+    text-align: inherit;
+    width: 50%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 40px;
+  }
+  .career .benefits ul li {
+    *zoom: 1;
+  }
+  .career .benefits ul li:before, .career .benefits ul li:after {
+    content: "";
+    display: table;
+  }
+  .career .benefits ul li:after {
+    clear: both;
+  }
+  .career .benefits ul li:last-child {
+    margin-right: 0%;
+  }
+}
+.career .benefits ul li i {
+  font-size: 70px;
+}
+.career .benefits ul li i:before {
+  width: auto;
+}
+.career .benefits ul:last-child {
+  margin-bottom: 0;
+}
+.career .positions-wrapper {
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+}
+.career .positions-wrapper:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.career .position a {
+  font-size: 16px;
+  display: block;
+}
+.career .position .vcount {
+  color: #666666;
+  font-size: 13px;
+}
+
+/**********************
+*                     *
 *   Home/ Index       *
 *                     *
 ***********************/
-.home .image-wrapper {
-  width: 360px;
-}
-@media (max-width: 768px) {
-  .home .image-wrapper {
-    margin: 0 auto;
-    width: 320px;
-    float: none;
-  }
-}
-@media (max-width: 768px) {
-  .home .image-wrapper img {
-    width: 70%;
-    margin: 0 auto;
-  }
-}
 .home .video-wrapper {
   width: 100%;
 }

@@ -1,0 +1,64 @@
+/**********************
+*                     *
+*   Career       *
+*                     *
+***********************/
+
+.career {
+  .benefits {
+    margin-top: 80px;
+    text-align: center;
+    ul {
+      display: inline-block;
+      margin-bottom: 60px;
+      @include breakpoint($mobile) {
+        margin-bottom: 0;
+        display: block;
+      }
+      li {
+        width: 180px;
+        text-align: center;
+        float: none;
+        display: inline-block;
+        vertical-align: top;
+        @include breakpoint($mobile) {
+          @include column(1/2, $gutter: 0);
+          margin-bottom: 40px;
+        }
+        p {
+          @extend .mts;
+        }
+        i {
+          font-size: 70px;
+          &:before {
+            width: auto;
+          }
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .positions-wrapper {
+    border-bottom: 1px solid $light;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-family: $font-family-roboto;
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+  .position {
+    a {
+      font-size: 16px;
+      display: block;
+    }
+    .vcount {
+      color: $gray;;
+      font-size: 13px;
+    }
+  }
+}
